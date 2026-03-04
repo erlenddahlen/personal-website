@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post — Erlend Evenstad Dahlen</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="site-title">Erlend Evenstad Dahlen</a>
+            <nav class="nav-links">
+                <a href="https://github.com/erlenddahlen" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:erlende3@gmail.com">Email</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <article class="post-content" id="post-content">
+            <p>Loading...</p>
+        </article>
+        <a href="index.html" class="back-link">Back to all posts</a>
+    </main>
+    <script>
+        const slug = new URLSearchParams(window.location.search).get('slug');
+        if (!slug) {
+            document.getElementById('post-content').innerHTML = '<p>Post not found.</p>';
+        } else {
+            Promise.all([
+                fetch('posts/posts.json').then(r => r.json()),
+                fetch(`posts/${slug}.md`).then(r => {
+                    if (!r.ok) throw new Error('Not found');
+                    return r.text();
+                })
+            ]).then(([posts, md]) => {
+                const meta = posts.find(p => p.slug === slug);
+                const container = document.getElementById('post-content');
+                container.innerHTML = `
+                    ${meta ? `<time>${meta.date}</time>` : ''}
+                    ${marked.parse(md)}
+                `;
+                if (meta) document.title = `${meta.title} — Erlend Evenstad Dahlen`;
+            }).catch(() => {
+                document.getElementById('post-content').innerHTML = '<p>Post not found.</p>';
+            });
+        }
+    </script>
+</body>
+</html>

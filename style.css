@@ -10,76 +10,245 @@ body {
     color: #e0e0e0;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid #222;
+    padding: 1.2rem 2rem;
+}
+
+.header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-main {
-    width: 100%;
-    max-width: 560px;
-    padding: 2rem;
-}
-
-.card {
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.4rem;
+.site-title {
+    font-size: 1.2rem;
     font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.site-title:hover {
+    color: #ccc;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.nav-links a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #e0e0e0;
+}
+
+/* Main content */
+main {
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    flex: 1;
+}
+
+/* Intro */
+.intro {
+    margin-bottom: 2.5rem;
+}
+
+.intro p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #aaa;
+}
+
+/* Posts section */
+.posts h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+}
+
+.post-card {
+    margin-bottom: 0.5rem;
+}
+
+.post-card a {
+    display: block;
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.post-card a:hover {
+    background-color: #1a1a1a;
+}
+
+.post-card time {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.post-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0.3rem 0;
+}
+
+.post-card p {
+    font-size: 0.95rem;
+    color: #999;
+    line-height: 1.5;
+}
+
+.empty {
+    color: #666;
+    font-style: italic;
+}
+
+/* Post content page */
+.post-content {
+    line-height: 1.8;
+}
+
+.post-content time {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.post-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
     color: #ffffff;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
 }
 
-.tagline {
-    font-size: 1.1rem;
-    color: #888;
-    margin-bottom: 1.5rem;
-}
-
-.bio {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #aaa;
-    margin-bottom: 2rem;
-}
-
-.links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.links a {
+.post-content h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
     color: #e0e0e0;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.post-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #d0d0d0;
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.post-content p {
+    font-size: 1.05rem;
+    color: #bbb;
+    margin-bottom: 1.2rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    color: #bbb;
+}
+
+.post-content li {
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+}
+
+.post-content code {
+    background-color: #1e1e1e;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #e0e0e0;
+}
+
+.post-content pre {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    margin: 1.2rem 0;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.post-content blockquote {
+    border-left: 3px solid #333;
+    padding-left: 1rem;
+    margin: 1.2rem 0;
+    color: #999;
+    font-style: italic;
+}
+
+.post-content a {
+    color: #7db4e6;
     text-decoration: none;
-    font-size: 0.95rem;
-    padding: 0.5rem 1.2rem;
-    border: 1px solid #333;
-    border-radius: 6px;
-    transition: border-color 0.2s, color 0.2s;
 }
 
-.links a:hover {
-    color: #ffffff;
-    border-color: #666;
+.post-content a:hover {
+    text-decoration: underline;
 }
 
+.back-link {
+    display: inline-block;
+    margin-top: 2.5rem;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #e0e0e0;
+}
+
+/* Responsive */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
+    header {
+        padding: 1rem;
     }
 
-    .links {
+    .header-inner {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        gap: 0.6rem;
     }
 
-    .links a {
-        width: 100%;
-        max-width: 200px;
-        text-align: center;
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    .post-content h1 {
+        font-size: 1.6rem;
     }
 }
