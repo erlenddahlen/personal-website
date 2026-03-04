@@ -1,5 +1,11 @@
 [
     {
+        "title": "Tools I Use Every Day",
+        "slug": "tools-i-use",
+        "date": "2026-03-04",
+        "description": "My daily developer toolkit — editor, terminal, git workflow, and notes."
+    },
+    {
         "title": "Hello World",
         "slug": "hello-world",
         "date": "2026-03-04",
