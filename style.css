@@ -246,6 +246,88 @@ main {
     color: #e0e0e0;
 }
 
+/* Nav active state */
+.nav-links a.active {
+    color: #e0e0e0;
+}
+
+/* Reading log */
+.reading-header {
+    margin-bottom: 3rem;
+}
+
+.reading-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.reading-header p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.reading-entry {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.reading-num {
+    font-size: 0.8rem;
+    color: #333;
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.reading-body h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 0.3rem;
+}
+
+.reading-meta {
+    font-size: 0.8rem;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.reading-entry blockquote {
+    border-left: 2px solid #2a2a2a;
+    padding-left: 1rem;
+    margin: 0 0 1rem;
+    color: #777;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.reading-takeaways {
+    list-style: none;
+    padding: 0;
+}
+
+.reading-takeaways li {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.reading-takeaways li::before {
+    content: "\2192";
+    position: absolute;
+    left: 0;
+    color: #444;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     header {

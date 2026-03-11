@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Log — Erlend Evenstad Dahlen</title>
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="site-title">Erlend Evenstad Dahlen</a>
+            <nav class="nav-links">
+                <a href="index.html">Blog</a>
+                <a href="reading.html" class="active">Reading</a>
+                <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="reading-header">
+            <h1>Reading Log</h1>
+            <p>Articles and books I've read, with notes and takeaways.</p>
+        </section>
+        <section class="reading-list" id="reading-list"></section>
+    </main>
+    <script>
+        fetch('readings/readings.json')
+            .then(res => res.json())
+            .then(entries => {
+                const list = document.getElementById('reading-list');
+                if (entries.length === 0) {
+                    list.innerHTML = '<p class="empty">Nothing logged yet.</p>';
+                    return;
+                }
+                entries.forEach((entry, i) => {
+                    const num = String(i + 1).padStart(2, '0');
+                    const date = new Date(entry.date).toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'short', day: 'numeric'
+                    });
+
+                    let takeawaysHtml = '';
+                    if (entry.takeaways && entry.takeaways.length > 0) {
+                        takeawaysHtml = '<ul class="reading-takeaways">' +
+                            entry.takeaways.map(t => `<li>${t}</li>`).join('') +
+                            '</ul>';
+                    }
+
+                    const article = document.createElement('article');
+                    article.className = 'reading-entry';
+                    article.innerHTML = `
+                        <div class="reading-num">${num}</div>
+                        <div class="reading-body">
+                            <h3>${entry.title}</h3>
+                            <div class="reading-meta">${entry.author || 'Unknown'} &middot; ${date}</div>
+                            ${entry.reflection ? `<blockquote>${entry.reflection}</blockquote>` : ''}
+                            ${takeawaysHtml}
+                        </div>
+                    `;
+                    list.appendChild(article);
+                });
+            });
+    </script>
+</body>
+</html>
